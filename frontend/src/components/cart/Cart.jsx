@@ -61,46 +61,27 @@ const Cart = () => {
                     <div className="row d-flex justify-content-between">
                         <div className="col-12 col-lg-8">
                             {cartItems?.map((item) => (
-                                <>
+                                <React.Fragment key={item.product}> {/* Add key prop here */}
                                     <hr />
-                                    <div className="cart-item" data-key="product1">
+                                    <div className="cart-item">
                                         <div className="row">
                                             <div className="col-4 col-lg-3">
-                                                <img
-                                                    src={item?.image}
-                                                    alt="Laptop"
-                                                    height="90"
-                                                    width="115"
-                                                />
+                                                <img src={item?.image} alt="Laptop" height="90" width="115" />
                                             </div>
                                             <div className="col-5 col-lg-3">
-                                                <Link to={`/products/${item?.product}`}>
-                                                    {" "}
-                                                    {item?.name}{" "}
-                                                </Link>
+                                                <Link to={`/products/${item?.product}`}> {item?.name} </Link>
                                             </div>
                                             <div className="col-4 col-lg-2 mt-4 mt-lg-0">
                                                 <p id="card_item_price">${item?.price}</p>
                                             </div>
                                             <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                                                 <div className="stockCounter d-inline">
-                                                    <span
-                                                        className="btn btn-danger minus"
-                                                        onClick={() => decreseQty(item, item.quantity)}
-                                                    >
+                                                    <span className="btn btn-danger minus" onClick={() => decreseQty(item, item.quantity)}>
                                                         {" "}
                                                         -{" "}
                                                     </span>
-                                                    <input
-                                                        type="number"
-                                                        className="form-control count d-inline"
-                                                        value={item?.quantity}
-                                                        readonly
-                                                    />
-                                                    <span
-                                                        className="btn btn-primary plus"
-                                                        onClick={() => increseQty(item, item.quantity)}
-                                                    >
+                                                    <input type="number" className="form-control count d-inline" value={item?.quantity} readOnly />
+                                                    <span className="btn btn-primary plus" onClick={() => increseQty(item, item.quantity)}>
                                                         {" "}
                                                         +{" "}
                                                     </span>
@@ -116,9 +97,10 @@ const Cart = () => {
                                         </div>
                                     </div>
                                     <hr />
-                                </>
+                                </React.Fragment>
                             ))}
                         </div>
+
 
                         <div className="col-12 col-lg-3 my-4">
                             <div id="order_summary">

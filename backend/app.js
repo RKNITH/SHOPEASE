@@ -106,10 +106,10 @@ import errorMiddleware from "./middlewares/errors.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import path from "path";
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// import path from "path";
+// import { fileURLToPath } from "url";
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // Handle Uncaught exceptions
 process.on("uncaughtException", (err) => {
@@ -118,9 +118,9 @@ process.on("uncaughtException", (err) => {
     process.exit(1);
 });
 
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    dotenv.config({ path: "./config/config.env" });
-}
+// if (process.env.NODE_ENV !== "PRODUCTION") {
+//     dotenv.config({ path: "./config/config.env" });
+// }
 
 // Load environment variables
 dotenv.config({ path: "./config/config.env" });
@@ -148,21 +148,21 @@ import authRoutes from "./routes/auth.js";
 import orderRoutes from "./routes/order.js";
 import paymentRoutes from "./routes/payment.js";
 
-import pkg from "nodemailer/lib/xoauth2/index.js";
-const { promises } = pkg;
+// import pkg from "nodemailer/lib/xoauth2/index.js";
+// const { promises } = pkg;
 
 app.use("/api/v1", productRoutes);
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", orderRoutes);
 app.use("/api/v1", paymentRoutes);
 
-if (process.env.NODE_ENV === "PRODUCTION") {
-    app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// if (process.env.NODE_ENV === "PRODUCTION") {
+//     app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
-    });
-}
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"));
+//     });
+// }
 
 // Using error middleware
 app.use(errorMiddleware);

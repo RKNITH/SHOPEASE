@@ -59,3 +59,7 @@ backend/build/
 !.vscode/extensions.json
 
 # End of https://www.toptal.com/developers/gitignore
+
+frontend/node_modules
+backend/node_modules
+backend/config
