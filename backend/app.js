@@ -140,7 +140,13 @@ app.use(
     })
 );
 app.use(cookieParser());
-app.use(cors({ origin: process.env.FRONTEND_URL }));
+app.use(
+    cors({
+        origin: [process.env.FRONTEND_URL],
+        methods: ["POST", "GET", "PUT", "DELETE"],
+        credentials: true,
+    })
+);
 
 // Import all routes
 import productRoutes from "./routes/products.js";
