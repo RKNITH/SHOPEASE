@@ -140,7 +140,7 @@ app.use(
     })
 );
 app.use(cookieParser());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 // Import all routes
 import productRoutes from "./routes/products.js";
